@@ -1,0 +1,23 @@
+#Requisitos
+
+Tener instalado django y django rest framework
+
+    python -m pip install django
+    python -m pip install djangorestframework
+
+#Comandos de uso comun 
+
+Crear proyecto 
+    django-admin startproject nombre . 
+
+Crear una app (modulo de la aplicacion web)
+    python manage.py startapp core
+
+(Agregar all a settings.py ,en ese caso core)
+
+Ejectucar migraciones (actualizacion de la base de datos )
+    python manage.py migrate
+ 
+#Creacion de usuarios 
+
+python manage.py createsuperuser -- email admin@duoc.cl --username admin

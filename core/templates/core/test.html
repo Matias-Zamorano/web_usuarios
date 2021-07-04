@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <title>Test</title>
+</head>
+<body>
+    <h1>Esta es una pagina de prueba</h1>
+    <h2>Bienvenida a la pagina {{nombre}}</h2>
+    <h3>{{nombre}} tiene un hijo llamado {{hijo.nombre}} y tiene {{hijo.edad}} años </h3>
+    <h3>La primera comida que te gusta es {{comidas.0}}  </h3>
+    <h3>Lista de comidas</h3>
+    <ol>
+        {% for comida in comidas  %}
+        <li>{{comida}}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

@@ -15,18 +15,10 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from django.urls.conf import include
-from rest_framework import routers
+from django.urls import path,include
 from core import views
 
-router = routers.DefaultRouter()
-router.register(r'usuarios',views.UserViewSet)
-
-#Si quisiese agregar por ejemplo una ruta para productos 
-# router.register(r'productos',views.ProductoViewSet)
-
 urlpatterns = [
-    path('',include(router.urls)),
     path('admin/', admin.site.urls),
+    path('',include('core.urls')),
 ]
