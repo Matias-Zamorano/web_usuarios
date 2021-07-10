@@ -7,4 +7,4 @@ from .models import Cursos
 class CursosForm(ModelForm):
     class Meta: 
         model = Cursos
-        fields = ["nombre","correo","tipo_curso"]
+        fields = ['nombre','correo','tipo_curso']

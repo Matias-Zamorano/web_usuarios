@@ -22,11 +22,11 @@ def contacto(request): #es para que se vea el html
 def cursos(request): #es para que se vea el html 
 
     #TRAER TODOS LOS USUARIOS ALMACENADOS EN LA TABLA VEHICULOS
-    curso=Cursos.objects.all() #esto es un select* from cursos
+    cursos=Cursos.objects.all() #esto es un select* from cursos
 
     #CREO UNA VARIABLE QUE LE PASE LOS DATOS de los vehiculos al template
     datos = {
-        'curso':curso 
+        'curso':cursos
     }
     return render(request,'core/cursos.html',datos)
 
@@ -35,5 +35,17 @@ def sobre_nosotros(request): #es para que se vea el html
 
 
 def form_cursos(request):
-    datos = {'form':CursosForm}
+    datos={'form' : CursosForm()}
+    if request.method=='POST':
+            formulario=CursosForm(request.POST)
+            if formulario.is_valid:
+                formulario.save()
+                datos['mensaje']="Guardado correctamente"
     return render(request,'core/form_cursos.html',datos)
+
+
+def form_mod_cursos(request,id):
+    curso = Cursos.objects.get(nombre=id)
+    datos = {'form' : CursosForm(instance=curso) }
+    
+    return render(request,'core/form_mod_cursos.html',datos)
