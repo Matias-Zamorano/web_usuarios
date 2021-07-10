@@ -39,20 +39,20 @@
               </nav> 
               <h1>Contacta con nosotros </h1>       
     </header>
+
     <main class="container-fluid">
-      <div class="row">
-        <div class="col col-md col-lg pt-2 ps-2 ">
-            <div class="card">
-              <div class="card-header bg-warning text-center"></div>
-              <div class="card-body">
-                  <h5>Por favor complete el siguiente formulario para contactarnos.
-                  Si no hay incovenientes o otras actividades,
-                  responderemos de inmediato al mensaje que envíe.</h5>
-                  <h5>Ingrese sus datos</h5>
-              </div>
+      
+        <div class="row">
+            <div class="col col-md col-lg pt-2 ps-2 ">
+                <div class="card">
+                    <div class="card-header bg-warning text-center"></div>
+                    <div class="card-body">
+                        <h5>Por favor complete el siguiente formulario para registrarse a algun curso que desee realizar. Responderemos de inmediato al mensaje que envíe.</h5>
+                        <h5>Ingrese sus datos</h5>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
 
       <div class="row">
             <div class="col-lg-4 col-md-6 col-12 pt-2">  
@@ -64,78 +64,32 @@
                     
                     <div class="card-body">
                       <form id="registro-form">
-                            <!--NOMBRE DE LA PERSONA-->
-                            <div class="mb-3 has-validation"> <!--has validation es para validar al ingresar el nombre no quede en 0-->
-                                <label for="nombre-txt" class="form-label">Nombre y apellido</label> <!--EL FOR DEBE TENER EL MISMO NOMBRE QUE EL ID , PARA QUE SE VINCULEN DE MANERA CORRECTA-->
-                                <input  type="text" id="nombre-txt" class="form-control "> <!-- form control sirve para que tome el tamaño que le dan  --> 
-                                <div class="invalid-feedback">Por favor ingrese Nombre y Apellido</div> <!--MENSAJE QUE APARECE CUANDO LA PERSONA NO INGRESA DATOS-->
-                            </div>
-
-                            <!--CORREO DE LA PERSONA -->
-                            <div class="mb-3 has validation">
-                              <label for="correo-txt" class="form-label">Correo Electronico</label>
-                              <input type="text" id="correo-txt" class="form-control" >
-                              <div class="invalid-feedback">Por favor ingrese un correo valido</div>
-                            </div>
-
-                            <!--MENSAJE QUE DIRA LA PERSONA-->
-                            <div class="mb-3 has-validation">
-                              <label for="mensaje-txt" class="form-label">Escribe un mensaje</label>
-                              <textarea id="mensaje-txt"></textarea>
-                              <div class="invalid-feedback">Por favor ingrese su mensaje valido</div>
-                            </div>
-
-                            <!--BOTON  TIPOS DE DUDA QUE TENGA EL USUARIO Y QEU  SALGA HACIA ABAJO POR EL ORDEN DE LOS NUMEROS-->
+                          {% csrf_token %}
+                            
                             <div class="mb-3"> 
-                                <label for="tipo-select" class="form-label">Tipo de consulta</label>
-                                <select name="form-select" id="tipo-select">
-                                  <option value="0">........</option>
-                                  <option value="1">Manual de ayuda        </option>   <!--|<i class="far fa-address-book"></i>|-->
-                                  <option value="2">Actualizacion de cuenta</option>   <!--|<i class="fas fa-user-edit"></i>|-->
-                                  <option value="3">Recuperacion  de cuenta</option>   <!--|<i class="fas fa-user-cog"></i>|-->
-                                  <option value="4">Eleminar usuario       </option>   <!--|<i class="fas fa-user-alt-slash"></i>|-->
-                                </select>
+                                 {{form.as_table}}
                             </div>
 
-                                <!-- BOTON TANTO PARA REGISTAR LOS REGISTROS Y LIMPIAR EL REGISTRO DE LA TABLA IZQUIERDA-->
+                                <!--BOTON TANTO PARA REGISTAR LOS REGISTROS Y LIMPIAR EL REGISTRO DE LA TABLA IZQUIERDA-->
                             <div class="mb-3">
                                 <div class="row">
+
                                     <div class="col-6">
-                                    <button type="submit" class="btn btn-success" >Registrar</button>
+                                        <button type="submit" id="Registrar-btn" class="btn btn-success" >Registrar</button>
                                     </div>
+
                                     <div class="col text-end">
-                                    <button type="button" id="limpiar-btn" class="btn btn-info">Limpiar</button>
+                                        <button type="reset" id="limpiar-btn" class="btn btn-info">Limpiar</button>
                                     </div>
                                 </div>
                             </div>
-                
+
                         </form>
                     </div>
+
                 </div>
             </div>
 
-            <div class="col-lg col-md col pt-2">
-                <div class="card">
-                    <div class="card-header bg-warning ">
-                        <span>Tabla de registro</span>
-                    </div>
-                    <div class="car-body">
-                        <Table class="table table-hover table-bordered table-stripped">
-                            <thead>
-                                <tr>
-                                    <th>nro</th>
-                                    <th>Nombre</th>
-                                    <th>correo</th>
-                                    <th>Tipo</th>
-                                    <th>mensaje</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbody-registro"></tbody>
-                        </Table>
-                    </div>
-                </div>
-            </div>
         </div>
     
     </main>
