@@ -1,6 +1,6 @@
 
 from core.forms import CursosForm
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Cursos
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -46,6 +46,15 @@ def form_cursos(request):
 
 def form_mod_cursos(request,id):
     curso = Cursos.objects.get(nombre=id)
-    datos = {'form' : CursosForm(instance=curso) }
-    
+    datos = {'form' : CursosForm(instance=curso)}
+    if request.method=='POST':
+        formulario =CursosForm(data=request.POST,instance=curso)
+        if formulario.is_valid:
+            formulario.save()
+            datos['mensaje']="Modificado correctamente"
     return render(request,'core/form_mod_cursos.html',datos)
+
+def form_del_cursos(request,id):
+    curso = Cursos.objects.get(nombre=id)
+    curso.delete()
+    return redirect(to="cursos")
